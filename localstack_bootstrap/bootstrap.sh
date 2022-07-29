@@ -20,6 +20,10 @@ create_bucket() {
     aws --endpoint-url=http://${LOCALSTACK_HOST}:4566 s3 mb s3://${BUCKET_NAME_TO_CREATE}
 }
 
+create_secret(){
+  aws --endpoint http://localhost:4566 secretsmanager create-secret --name bd-test --description "Some secret" --secret-string '{"user":"adm","password":"adm","decryptionkey":"123"}' --tags '[{"Key":"user", "Value":"adm"},{"Key":"password","Value":"adm"},{"Key":"decryptionkey","Value":"123"}]' --region us-east-1
+}
+
 # create queues
 for queue in "queue1"
 do

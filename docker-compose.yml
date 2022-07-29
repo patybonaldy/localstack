@@ -28,5 +28,4 @@ services:
 
 networks:
   localstacknetwork1:
-    external: true
     name: localstacknetwork1
